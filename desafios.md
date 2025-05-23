@@ -122,12 +122,6 @@ const petShop = {
 
 Teste as funções chamando-as no final do seu código.
 
----
-
-> ✉️ Dica: use `console.log()` para verificar seus resultados!
-
----
-
 **Bons estudos!**
 
 
