@@ -1,107 +1,92 @@
-Claro! Aqui estão alguns **exercícios práticos de JavaScript** envolvendo **funções**, **objetos** e **arrays**, separados por tema e com dificuldade progressiva:
+Perfeito! Aqui vai uma nova versão dos exercícios, **sem usar métodos de array** como `.map()`, `.filter()`, `.reduce()` etc. Eles são ótimos para alunos que estão aprendendo lógica com foco no uso de **laços, condições, funções, objetos e arrays básicos**:
 
 ---
 
 ## 📘 **Funções**
 
-### 1. Função que soma dois números
+### 1. Função que retorna o dobro de um número
 
 ```js
-function somar(a, b) {
-  return a + b;
+function dobro(n) {
+  return n * 2;
 }
-console.log(somar(3, 5)); // 8
+console.log(dobro(4)); // 8
 ```
 
-### 2. Função que retorna se um número é par ou ímpar
+### 2. Função que verifica se um número é positivo, negativo ou zero
 
 ```js
-function parOuImpar(num) {
-  return num % 2 === 0 ? "Par" : "Ímpar";
+function verificaNumero(n) {
+  if (n > 0) return "Positivo";
+  else if (n < 0) return "Negativo";
+  else return "Zero";
 }
-console.log(parOuImpar(7)); // Ímpar
-```
-
-### 3. Função que calcula o fatorial de um número
-
-```js
-function fatorial(n) {
-  if (n === 0) return 1;
-  return n * fatorial(n - 1);
-}
-console.log(fatorial(5)); // 120
+console.log(verificaNumero(-3)); // Negativo
 ```
 
 ---
 
 ## 🧱 **Objetos**
 
-### 1. Criar um objeto `aluno` com nome, idade e curso
+### 3. Criar um objeto carro com marca, modelo e ano
 
 ```js
-const aluno = {
-  nome: "João",
-  idade: 17,
-  curso: "Programação Web"
+const carro = {
+  marca: "Toyota",
+  modelo: "Corolla",
+  ano: 2020
 };
-console.log(aluno.nome); // João
+console.log(carro.marca); // Toyota
 ```
 
-### 2. Adicionar uma função dentro do objeto
+### 4. Criar uma função que recebe um objeto pessoa e imprime uma saudação
 
 ```js
-aluno.apresentar = function() {
-  return `Olá, meu nome é ${this.nome} e eu estudo ${this.curso}.`;
-};
-console.log(aluno.apresentar());
-```
-
-### 3. Criar uma função que receba um objeto pessoa e retorne uma saudação
-
-```js
-function cumprimentar(pessoa) {
-  return `Olá, ${pessoa.nome}!`;
+function saudacao(pessoa) {
+  console.log("Olá, " + pessoa.nome + "! Seja bem-vindo(a).");
 }
 
-const pessoa = { nome: "Maria" };
-console.log(cumprimentar(pessoa)); // Olá, Maria!
+const pessoa = {
+  nome: "Lucas"
+};
+
+saudacao(pessoa); // Olá, Lucas! Seja bem-vindo(a).
 ```
 
 ---
 
-## 📚 **Arrays**
+## 📚 **Arrays (sem métodos)**
 
-### 1. Criar um array com 5 frutas e exibir a terceira
+### 5. Criar um array de 5 números e imprimir cada um
 
 ```js
-const frutas = ["maçã", "banana", "laranja", "uva", "melancia"];
-console.log(frutas[2]); // laranja
+const numeros = [10, 20, 30, 40, 50];
+
+for (let i = 0; i < 5; i++) {
+  console.log(numeros[i]);
+}
 ```
 
-### 2. Adicionar e remover elementos do array
+### 6. Calcular a média de 4 notas usando um `for`
 
 ```js
-frutas.push("abacaxi"); // adiciona no final
-frutas.shift(); // remove o primeiro
-console.log(frutas);
-```
-
-### 3. Criar uma função que receba um array de números e retorne a média
-
-```js
-function calcularMedia(numeros) {
-  const soma = numeros.reduce((acc, n) => acc + n, 0);
-  return soma / numeros.length;
+function mediaNotas(notas) {
+  let soma = 0;
+  for (let i = 0; i < 4; i++) {
+    soma = soma + notas[i];
+  }
+  return soma / 4;
 }
 
-console.log(calcularMedia([10, 7, 8, 6])); // 7.75
+const notas = [7, 8, 6, 9];
+console.log(mediaNotas(notas)); // 7.5
 ```
 
 ---
 
-## 💡 Desafio Integrado (Funções + Objetos + Arrays)
+## 🧠 **Desafio com array e objeto (sem métodos)**
 
-> Crie uma função que receba um array de objetos representando alunos com nota, e retorne os nomes dos aprovados (nota >= 7):
+### 7. Dado um array de alunos com nome e nota, imprimir apenas os nomes dos aprovados (nota >= 7)
 
 ```js
 const alunos = [
@@ -110,15 +95,17 @@ const alunos = [
   { nome: "Bianca", nota: 9 }
 ];
 
-function aprovados(lista) {
-  return lista
-    .filter(aluno => aluno.nota >= 7)
-    .map(aluno => aluno.nome);
+function mostrarAprovados(lista) {
+  for (let i = 0; i < lista.length; i++) {
+    if (lista[i].nota >= 7) {
+      console.log(lista[i].nome);
+    }
+  }
 }
 
-console.log(aprovados(alunos)); // ['Ana', 'Bianca']
+mostrarAprovados(alunos); // Ana, Bianca
 ```
 
 ---
 
-Se quiser, posso gerar uma **folha de exercícios com enunciados e espaço para resposta** ou preparar um **quiz estilo Kahoot** com base nesses temas. Deseja isso?
+Se quiser, posso organizar isso em **PDF ou README** com espaço para respostas, ou criar uma versão com **enunciados apenas** para uso em sala. Deseja isso?
