@@ -1,7 +1,4 @@
 # Exercícios de JavaScript: Funções, Objetos e Arrays (sem métodos)
-
-Este material é voltado para prática de lógica com **funções**, **objetos** e **arrays** em JavaScript, **sem o uso de métodos como `.map()`, `.filter()` ou `.reduce()`**.
-
 ---
 
 ## 📘 Funções
