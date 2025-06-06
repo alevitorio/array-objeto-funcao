@@ -1,35 +1,34 @@
 // Objeto principal do sistema PetShop
 const petShop = {
+  // ########## Atributos ou propriedades ###################
 
   // Lista de pets cadastrados
   pets: [
-    {
-      nome: "Rex", // nome do animal
-      tipo: "cachorro", // tipo do animal
-      idade: 5, // idade em anos
-      vacinado: true, // se está vacinado
-      historicoServicos: ["Banho - 01/31/22"], // histórico de serviços
-      carrinho: []
-    },
-    {
-      nome: "Mimi",
-      tipo: "gato",
-      idade: 2,
-      vacinado: false,
-      historicoServicos: ["Consulta - 11/09/22"],
-      carrinho: []
-    },
-    {
-      nome: "Toby",
-      tipo: "cachorro",
-      idade: 3,
-      vacinado: false,
-      historicoServicos: [],
-      carrinho:[]
-    }
+    // {
+    //   nome: "Rex", // nome do animal
+    //   tipo: "cachorro", // tipo do animal
+    //   idade: 5, // idade em anos
+    //   vacinado: true, // se está vacinado
+    //   historicoServicos: ["Banho - 01/31/22"], // histórico de serviços,
+    //   carrinho: []
+    // },
+    // {
+    //   nome: "Mimi",
+    //   tipo: "gato",
+    //   idade: 2,
+    //   vacinado: false,
+    //   historicoServicos: ["Consulta - 11/09/22"],
+    //   carrinho: []
+    // },
+    // {
+    //   nome: "Toby",
+    //   tipo: "cachorro",
+    //   idade: 3,
+    //   vacinado: false,
+    //   historicoServicos: [],
+    //   carrinho: []
+    // }
   ],
-
-
 
   // Lista de serviços oferecidos
   servicos: [
@@ -42,9 +41,11 @@ const petShop = {
   // Lista de vendas realizadas
   vendas: [],
 
+  // ############## Rotinas/funçoes #####################
+
   //  cadastro do pet
   cadastro: function (nome, tipo, idade, vacinado = false) {
-    this.pets[this.pets.length] = { nome, idade, tipo, vacinado, historicoServicos: [] }
+    this.pets[this.pets.length] = { nome, idade, tipo, vacinado, historicoServicos: [],carrinho:[] }
     console.info("Cadastro", "O pet foi salvo com sucesso!");
 
     console.table(this.pets[this.pets.length - 1])
@@ -72,7 +73,8 @@ const petShop = {
 
   // Função para listar todos os pets cadastrados
   listarPets: function () {
-    console.log("--------------- Lista de Pets --------------");
+    console.log("--------------- Lista de Pets --------------".toUpperCase());
+    
     console.table(this.pets); // mostra tabela com dados dos pets
   },
 
@@ -89,11 +91,15 @@ const petShop = {
 
     // Cria o objeto da venda
     const venda = {
-      nome: this.pets[id].nome,
+      // nome: this.pets[id].nome,
       descricao: this.servicos[2].descricao,
       valor: this.servicos[2].valor
     };
-    this.vendas[this.vendas.length] = venda;
+
+    this.pets[id].carrinho[this.pets[id].carrinho.length] = venda
+
+    console.log(`vVacina lançado com sucesso 💉`);
+
   },
 
   // Função para registrar uma consulta
@@ -107,12 +113,13 @@ const petShop = {
       this.servicos[3].descricao + " - " + hoje.toLocaleDateString();
     // Cria o objeto da venda
     const venda = {
-      nome: this.pets[id].nome,
+      // nome: this.pets[id].nome,
       descricao: this.servicos[3].descricao,
       valor: this.servicos[3].valor
     };
-    this.vendas[this.vendas.length] = venda;
 
+    this.pets[id].carrinho[this.pets[id].carrinho.length] = venda
+    console.log(`Consulta lançado com sucesso 👨‍⚕️`);
   },
 
   // Função para registrar um banho
@@ -130,31 +137,46 @@ const petShop = {
       this.servicos[0].descricao + " - " + hoje.toLocaleDateString();
     // Cria o objeto da venda
     const venda = {
-      nome: this.pets[id].nome,
+      // nome: this.pets[id].nome,
       descricao: this.servicos[0].descricao,
       valor: this.servicos[0].valor
     };
 
-    this.vendas[this.vendas.length] = venda;
+    this.pets[id].carrinho[this.pets[id].carrinho.length] = venda
+    console.log(`Banho lançado com sucesso 🚿`);
+
 
   },
 
   // Função que registra a venda de um serviço no caixa
   caixa: function () {
+    let carrinhoAbertos = []
+    console.clear();
+    for (let i = 0; i < this.pets.length; i++) {
+      if (this.pets[i].carrinho.length > 0) {
+        carrinhoAbertos[carrinhoAbertos.length] = {
+          nome: this.pets[i].nome,
+          carrinho: this.pets[i].carrinho
+        }
+      }
 
-    // console.clear(); // limpa o console
-    if (this.vendas.length <= 0) { return console.log("Nenhuma venda encontrada!"); }
-
-    console.table(this.vendas); // exibe as vendas
-
-    // Calcula o total das vendas
-    let total = 0;
-    for (let i = 0; i < this.vendas.length; i++) {
-      total += this.vendas[i].valor;
     }
 
-    // Mostra o valor total
-    console.info("Total - R$", total);
+    for (let i = 0; i < carrinhoAbertos.length; i++) {
+      let total = 0
+      console.log(`###################################################################################################`);
+      console.log(`Pet 😺: ${carrinhoAbertos[i].nome}`);
+      console.log(`Serviços 📑:`);
+      console.table(carrinhoAbertos[i].carrinho)
+
+      for (let j = 0; j < carrinhoAbertos[i].carrinho.length; j++) {
+        total += carrinhoAbertos[i].carrinho[j].valor
+
+      }
+      console.table({ total })
+
+    }
+
   },
 
   // Exibe a tabela de serviços disponíveis
@@ -163,18 +185,9 @@ const petShop = {
   }
 };
 
-// Testes chamando serviços no caixa
 
 
-petShop.cadastro("Lilica", "cachorro", true, 5,)
-
-// petShop.consulta('Mimi')
-// petShop.consulta('Mimi')
-petShop.banho('Lilica')
-petShop.caixa()
-// petShop.listarPets()
-
-
+export default petShop
 
 
 

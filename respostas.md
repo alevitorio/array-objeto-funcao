@@ -1,7 +1,3 @@
-Perfeito! Aqui vai uma nova versão dos exercícios, **sem usar métodos de array** como `.map()`, `.filter()`, `.reduce()` etc. Eles são ótimos para alunos que estão aprendendo lógica com foco no uso de **laços, condições, funções, objetos e arrays básicos**:
-
----
-
 ## 📘 **Funções**
 
 ### 1. Função que retorna o dobro de um número
@@ -108,4 +104,4 @@ mostrarAprovados(alunos); // Ana, Bianca
 
 ---
 
-Se quiser, posso organizar isso em **PDF ou README** com espaço para respostas, ou criar uma versão com **enunciados apenas** para uso em sala. Deseja isso?
+
