@@ -84,9 +84,46 @@ const alunos = [
 ];
 ```
 
-Crie uma função `mostrarAprovados` que percorra esse array e imprima os nomes dos alunos com nota maior ou igual a 7.
+## 🐾 Projeto: PetShop
 
----
+Crie um objeto chamado `petShop` que simule o funcionamento básico de um sistema de pet shop. O objeto deve conter:
+
+* Um array chamado `pets` com pelo menos 3 pets (nome, tipo, idade, vacinado: true/false e um array `historicoServicos` com strings representando os serviços já feitos)
+* Um array chamado `servicos` contendo os serviços oferecidos pelo pet shop (ex: "Banho", "Tosa", "Vacinação", "Consulta")
+* Uma função `listarPets()` que imprime todos os pets cadastrados
+* Uma função `vacinarPet(nome)` que vacina o pet se ele ainda não foi vacinado
+* Uma função `atenderPet(nome)` que imprime uma mensagem de atendimento
+* Uma função `relatorio()` que mostra quantos pets estão vacinados e quantos não estão
+
+Exemplo de estrutura:
+
+```js
+const petShop = {
+  pets: [
+    { nome: "Rex", tipo: "cachorro", idade: 5, vacinado: true, historicoServicos: ["Banho"] },
+    { nome: "Mimi", tipo: "gato", idade: 2, vacinado: false, historicoServicos: ["Consulta"] },
+    { nome: "Toby", tipo: "cachorro", idade: 3, vacinado: false, historicoServicos: [] }
+  ],
+  servicos: ["Banho", "Tosa", "Vacinação", "Consulta"],
+  listarPets: function() {
+    // seu código aqui
+  },
+  vacinarPet: function(nome) {
+    // seu código aqui
+  },
+  atenderPet: function(nome) {
+    // seu código aqui
+  },
+  relatorio: function() {
+    // seu código aqui
+  }
+};
+```
+
+Teste as funções chamando-as no final do seu código.
+
+**Bons estudos!**
+
 
 > ✉️ Dica: use `console.log()` para verificar seus resultados!
 
